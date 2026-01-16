@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./index.css" />
+    <style>
+      body {
+        margin: 0;
+        pointer-events: auto;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import { loadLayout } from "./utils/layoutLoader.js";
+      import { createMaskA } from "./components/index.js";
+
+      try {
+        const layout = await loadLayout();
+        console.log(layout);
+        
+        document.body.append(createMaskA(layout));
+      } catch (e) {
+        console.error("Failed to load layout:", e);
+      }
+    </script>
+  </body>
+</html>

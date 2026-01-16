@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "resolution": "1920x1080",
+    "scale": 1,
+    "version": "v1"
+  },
+  "commonOrder": {
+    "orderOpenForm": {
+      "createNewWidget": { "x": 1570, "y": 58, "w": 125, "h": 27 },
+      "spotMarket": { "x": 630, "y": 215, "w": 115, "h": 45 },
+      "createNewOrder": { "x": 780, "y": 215, "w": 95, "h": 70 },
+      "typeBuy": { "x": 775, "y": 305, "w": 75, "h": 20 },
+      "typeSell": { "x": 775, "y": 335, "w": 75, "h": 20 }
+    }
+  }
+}
