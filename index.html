@@ -16,10 +16,13 @@
       import { loadLayout } from "./utils/layoutLoader.js";
       import { createMaskA } from "./components/index.js";
 
+      console.log("Index page loaded");
+      console.log('layoutAPI available:', !!window.layoutAPI);
+
       try {
         const layout = await loadLayout();
-        console.log(layout);
-        
+        console.log('Layout loaded:', layout);
+
         document.body.append(createMaskA(layout));
       } catch (e) {
         console.error("Failed to load layout:", e);

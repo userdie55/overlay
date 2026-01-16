@@ -29,11 +29,28 @@ app.whenReady().then(() => {
 
     webPreferences: {
       contextIsolation: true,
-      preload: path.join(__dirname, "utils/electronPreload.js"),
+      nodeIntegration: false,
+      enableRemoteModule: false,
+      webSecurity: true,
+      preload: path.resolve(__dirname, "utils/electronPreload.js"),
     },
   });
 
   const layoutPath = path.join(app.getAppPath(), "layout.json");
+
+  console.log("Layout path:", layoutPath);
+
+  const preloadPath = path.resolve(__dirname, "utils/electronPreload.js");
+  console.log("Preload path:", preloadPath);
+  console.log("Preload exists:", fs.existsSync(preloadPath));
+
+  // Проверяем содержимое preload файла
+  try {
+    const preloadContent = fs.readFileSync(preloadPath, 'utf8');
+    console.log("Preload content length:", preloadContent.length);
+  } catch (err) {
+    console.error("Failed to read preload file:", err);
+  }
 
   ipcMain.handle("layout:load", async () => {
     const raw = fs.readFileSync(layoutPath, "utf-8");
@@ -49,7 +66,7 @@ app.whenReady().then(() => {
   win.setFocusable(false);
 
   win.loadFile("index.html");
-  win.webContents.openDevTools({ mode: "detach" });
+    win.webContents.openDevTools({ mode: "detach" });
 
   win.setAlwaysOnTop(true, "screen-saver");
 
